@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GaStation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gas">Gaz</string>
+    <string name="diesel">Dizel</string>
+    <string name="gasoline">Benzin</string>
+    <string name="pump">Pompa</string>
+    <string name="todo">TODO</string>
+
+    <string-array name="city_array">
+        <item>İstanbul</item>
+        <item>Adana</item>
+        <item>Artvin</item>
+        <item>Karabük</item>
+        <item>Samsun</item>
+        <item>Kilis</item>
+    </string-array>
+</resources>

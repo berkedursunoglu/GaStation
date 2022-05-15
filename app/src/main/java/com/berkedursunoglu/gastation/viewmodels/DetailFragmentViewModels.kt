@@ -1,5 +1,6 @@
 package com.berkedursunoglu.gastation.viewmodels
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -23,7 +24,7 @@ class DetailFragmentViewModels : ViewModel() {
     private val disposeOn: CompositeDisposable = CompositeDisposable()
 
 
-    fun fuelcost(view: View, fragment: FragmentDetailBinding, fueltype: String) {
+    fun fuelCost(view: View, fragment: FragmentDetailBinding, fueltype: String) {
         val arrayAdapter = ArrayAdapter.createFromResource(
             view.context,
             R.array.city_array,
@@ -48,6 +49,7 @@ class DetailFragmentViewModels : ViewModel() {
             retrofitServicesAPI.getData().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<FuelResponse>() {
+                    @SuppressLint("SetTextI18n")
                     override fun onSuccess(t: FuelResponse) {
                         fuelArray.value = t.fuel
                         fragment.progressBar.visibility = View.GONE
@@ -61,6 +63,7 @@ class DetailFragmentViewModels : ViewModel() {
         )
     }
 
+    @SuppressLint("SetTextI18n")
     fun tankFuelCost(fragment: FragmentDetailBinding){
         if (fuelArray.value == null){
         }else{
@@ -68,7 +71,7 @@ class DetailFragmentViewModels : ViewModel() {
             if (tank.toFloatOrNull() == null){
                 fragment.tankTextView.text = "Sayı Girmelisiniz.."
             }else{
-                var tankCoast = tank.toFloatOrNull()!! * fuelArray.value?.get(1)?.fuel?.toFloatOrNull()!!
+                val tankCoast = tank.toFloatOrNull()!! * fuelArray.value?.get(1)?.fuel?.toFloatOrNull()!!
                 fragment.tankTextView.text = "Aracınız ${ tankCoast.toString() } TL'ye doluyor."
             }
         }

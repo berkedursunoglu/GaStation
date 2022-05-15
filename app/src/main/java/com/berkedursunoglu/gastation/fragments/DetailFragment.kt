@@ -1,22 +1,15 @@
 package com.berkedursunoglu.gastation.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.berkedursunoglu.gastation.R
 import com.berkedursunoglu.gastation.databinding.FragmentDetailBinding
-import com.berkedursunoglu.gastation.models.Fuel
 import com.berkedursunoglu.gastation.viewmodels.DetailFragmentViewModels
 
 
@@ -38,7 +31,7 @@ class DetailFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(DetailFragmentViewModels::class.java)
         dataBinding.fuelCostTextView.visibility = View.GONE
         val args: DetailFragmentArgs by navArgs()
-        viewModel.fuelcost(dataBinding.root,dataBinding,args.type)
+        viewModel.fuelCost(dataBinding.root,dataBinding,args.type)
         return dataBinding.root
     }
 

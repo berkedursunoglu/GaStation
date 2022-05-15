@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
-            android:text="Fiyat"
+            android:text="Ortalama Fiyat"
             android:textColor="@color/primaryTextColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
             android:layout_marginBottom="107dp"
             android:gravity="center"
             android:text="TextView"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="#E53935"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,27 +100,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="286dp"
-            android:layout_marginEnd="80dp"
             android:layout_marginBottom="286dp"
             android:text="Depom ne kadara doluyor?"
             android:textColor="@color/primaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="19dp"
-            android:layout_marginStart="115dp"
             android:layout_marginTop="61dp"
-            android:layout_marginEnd="115dp"
             android:layout_marginBottom="64dp"
             android:text="Kilometrede ne yakıyor?"
             android:textColor="@color/primaryTextColor"
             app:layout_constraintBottom_toTopOf="@+id/kmButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tankTextView" />
 
         <Button
@@ -150,6 +148,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginBottom="190dp"
             android:text="TextView"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -160,6 +159,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="20dp"
             android:text="TextView"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 

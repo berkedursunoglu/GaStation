@@ -51,7 +51,7 @@ class DetailFragmentViewModels : ViewModel() {
                     override fun onSuccess(t: FuelResponse) {
                         fuelArray.value = t.fuel
                         fragment.progressBar.visibility = View.GONE
-                        fragment.fuelCostTextView.text = t.fuel[1].fuel
+                        fragment.fuelCostTextView.text = "${t.fuel[1].fuel} TL"
                         fragment.fuelCostTextView.visibility = View.VISIBLE
                     }
                     override fun onError(e: Throwable) {
@@ -62,31 +62,29 @@ class DetailFragmentViewModels : ViewModel() {
     }
 
     fun tankFuelCost(fragment: FragmentDetailBinding){
-        if(fuelArray.value != null){
-            var doubleFuel = fuelArray.value!![1].fuel.toFloatOrNull()
-            val check = fragment.editTextTextPersonName.text
-            if (check.equals(String())){
-                fragment.editTextTextPersonName.hint = "Sayı Girilmeli"
+        if (fuelArray.value == null){
+        }else{
+            val tank = fragment.editTextTextPersonName.text.toString()
+            if (tank.toFloatOrNull() == null){
+                fragment.tankTextView.text = "Sayı Girmelisiniz.."
             }else{
-                var tankLT = fragment.editTextTextPersonName.text.toString()
-                fragment.tankTextView.text = "Depo dolumu: ${(doubleFuel?.times(tankLT.toFloat())).toString()} TL"
+                var tankCoast = tank.toFloatOrNull()!! * fuelArray.value?.get(1)?.fuel?.toFloatOrNull()!!
+                fragment.tankTextView.text = "Aracınız ${ tankCoast.toString() } TL'ye doluyor."
             }
         }
     }
 
     fun kmCoast(fragment: FragmentDetailBinding){
-        if(fuelArray.value != null){
-            var doubleFuel = fuelArray.value!![1].fuel.toFloatOrNull()
-            val check = fragment.editTextTextPersonName2.text
-            if (check.equals(String())){
-                fragment.editTextTextPersonName2.hint = "Sayı Girilmeli"
+        if (fuelArray.value == null){
+        }else{
+            val km100 = fragment.editTextTextPersonName2.text.toString()
+            if (km100.toFloatOrNull() == null){
+                fragment.kmTextView.text = "Sayı Girmelisiniz.."
             }else{
-                var aKm = fragment.editTextTextPersonName2.text.toString()
-                var aKMLT = aKm.toFloatOrNull()?.div(100)
-                var aKmFuelCoast = aKMLT?.times(doubleFuel!!)
-                fragment.kmTextView.text = "Km'de ${aKmFuelCoast} TL"
+                val aKmLt = km100.toFloatOrNull()!! / 100
+                val kmFuelCost = aKmLt * fuelArray.value!![1].fuel.toFloatOrNull()!!
+                fragment.kmTextView.text = "Aracınız Km'de ${kmFuelCost} TL yakıyor."
             }
-
         }
     }
 

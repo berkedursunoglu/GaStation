@@ -46,13 +46,11 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         dataBinding.tankButton.setOnClickListener {
-            val check = dataBinding.editTextTextPersonName.text
-            viewModel.tankFuelCost(this.dataBinding)
+            viewModel.tankFuelCost(dataBinding)
         }
 
         dataBinding.kmButton.setOnClickListener {
-            val check = dataBinding.editTextTextPersonName2.text
-            viewModel.kmCoast(this.dataBinding)
+            viewModel.kmCoast(dataBinding)
         }
     }
 }

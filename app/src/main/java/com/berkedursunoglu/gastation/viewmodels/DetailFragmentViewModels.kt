@@ -64,26 +64,27 @@ class DetailFragmentViewModels : ViewModel() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun tankFuelCost(fragment: FragmentDetailBinding){
-        if (fuelArray.value == null){
-        }else{
+    fun tankFuelCost(fragment: FragmentDetailBinding) {
+        if (fuelArray.value == null) {
+        } else {
             val tank = fragment.editTextTextPersonName.text.toString()
-            if (tank.toFloatOrNull() == null){
+            if (tank.toFloatOrNull() == null) {
                 fragment.tankTextView.text = "Sayı Girmelisiniz.."
-            }else{
-                val tankCoast = tank.toFloatOrNull()!! * fuelArray.value?.get(1)?.fuel?.toFloatOrNull()!!
-                fragment.tankTextView.text = "Aracınız ${ tankCoast.toString() } TL'ye doluyor."
+            } else {
+                val tankCoast =
+                    tank.toFloatOrNull()!! * fuelArray.value?.get(1)?.fuel?.toFloatOrNull()!!
+                fragment.tankTextView.text = "Aracınız ${tankCoast.toString()} TL'ye doluyor."
             }
         }
     }
 
-    fun kmCoast(fragment: FragmentDetailBinding){
-        if (fuelArray.value == null){
-        }else{
+    fun kmCoast(fragment: FragmentDetailBinding) {
+        if (fuelArray.value == null) {
+        } else {
             val km100 = fragment.editTextTextPersonName2.text.toString()
-            if (km100.toFloatOrNull() == null){
+            if (km100.toFloatOrNull() == null) {
                 fragment.kmTextView.text = "Sayı Girmelisiniz.."
-            }else{
+            } else {
                 val aKmLt = km100.toFloatOrNull()!! / 100
                 val kmFuelCost = aKmLt * fuelArray.value!![1].fuel.toFloatOrNull()!!
                 fragment.kmTextView.text = "Aracınız Km'de ${kmFuelCost} TL yakıyor."

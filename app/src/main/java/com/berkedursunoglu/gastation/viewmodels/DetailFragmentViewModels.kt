@@ -22,6 +22,7 @@ class DetailFragmentViewModels : ViewModel() {
     val fuelArray: MutableLiveData<List<Fuel>> = MutableLiveData()
     private val retrofitServicesAPI = RetrofitServicesAPI()
     private val disposeOn: CompositeDisposable = CompositeDisposable()
+    val type: MutableLiveData<String> = MutableLiveData()
 
 
     fun fuelCost(view: View, fragment: FragmentDetailBinding, fueltype: String) {
@@ -35,18 +36,23 @@ class DetailFragmentViewModels : ViewModel() {
         fragment.citySpinner.adapter = arrayAdapter
         fragment.citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                choosedCity.value = p0?.selectedItem.toString()
-                retrofitData(fragment)
+                fragment.fuelCostTextView.visibility = View.GONE
+                fragment.progressBar.visibility = View.VISIBLE
+                var city = p0?.selectedItem.toString().lowercase()
+                choosedCity.value = city
+                var fuelType = type.value
+                println("type ${fuelType} şehir ${city}")
+                var url = "gasPrice${fuelType}?city=${city}"
+                retrofitData(fragment,url)
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
     }
 
-    fun retrofitData(fragment: FragmentDetailBinding) {
+    fun retrofitData(fragment: FragmentDetailBinding,url:String) {
         disposeOn.add(
-            retrofitServicesAPI.getData().subscribeOn(Schedulers.io())
+            retrofitServicesAPI.getData(url).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<FuelResponse>() {
                     @SuppressLint("SetTextI18n")
@@ -57,6 +63,7 @@ class DetailFragmentViewModels : ViewModel() {
                         fragment.fuelCostTextView.visibility = View.VISIBLE
                     }
                     override fun onError(e: Throwable) {
+                        println("retrofit error!")
                         println(e.message)
                     }
                 })

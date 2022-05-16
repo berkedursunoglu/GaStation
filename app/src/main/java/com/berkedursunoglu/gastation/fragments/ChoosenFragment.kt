@@ -30,11 +30,11 @@ class ChoosenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataBinding.gasolineButton.setOnClickListener { viewModel.navigate(it,"gasoline") }
+        dataBinding.gasolineButton.setOnClickListener { viewModel.navigate(it,"/turkeyGasoline") }
 
-        dataBinding.dieselButton.setOnClickListener { viewModel.navigate(it,"diesel") }
+        dataBinding.dieselButton.setOnClickListener { viewModel.navigate(it,"/turkeyDiesel") }
 
-        dataBinding.gasButton.setOnClickListener { viewModel.navigate(it,"gas") }
+        dataBinding.gasButton.setOnClickListener { viewModel.navigate(it,"/turkeyLpg") }
 
     }
 

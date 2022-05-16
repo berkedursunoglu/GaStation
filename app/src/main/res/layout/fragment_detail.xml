@@ -147,8 +147,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
             android:layout_marginBottom="190dp"
-            android:text="TextView"
+            android:text="Bilgi"
             android:textColor="@color/primaryTextColor"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -158,8 +159,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="20dp"
-            android:text="TextView"
+            android:text="Bilgi"
             android:textColor="@color/primaryTextColor"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -168,6 +170,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"

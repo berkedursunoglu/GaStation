@@ -29,8 +29,8 @@ class DetailFragment : Fragment() {
     ): View? {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         viewModel = ViewModelProviders.of(this).get(DetailFragmentViewModels::class.java)
-        dataBinding.fuelCostTextView.visibility = View.GONE
         val args: DetailFragmentArgs by navArgs()
+        viewModel.type.value = args.type
         viewModel.fuelCost(dataBinding.root,dataBinding,args.type)
         return dataBinding.root
     }

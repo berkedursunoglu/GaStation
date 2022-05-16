@@ -16,7 +16,7 @@ class RetrofitServicesAPI {
         Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build().create(IAPI::class.java)
 
-    fun getData(): Single<FuelResponse> {
-        return api.getData()
+    fun getData(url:String): Single<FuelResponse> {
+        return api.getData(url)
     }
 }

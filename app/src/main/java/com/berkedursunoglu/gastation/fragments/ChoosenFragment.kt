@@ -14,6 +14,7 @@ import kotlinx.coroutines.*
 
 class ChoosenFragment : Fragment() {
 
+
     private lateinit var dataBinding:FragmentChoosenBinding
     private lateinit var viewModel: ChoosenFragmentViewModels
 

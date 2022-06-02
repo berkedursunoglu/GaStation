@@ -13,7 +13,7 @@ interface IAPI {
 
 
 
-    @Headers("authorization: apikey 52NQpPwrHlnAZlI0Rnx6Sm:69ADQmuknHYOWxkgV1FVGd","content-type: application/json")
+    @Headers("//")
     @GET
     fun getData(@Url url:String) : Single<FuelResponse>
 }
